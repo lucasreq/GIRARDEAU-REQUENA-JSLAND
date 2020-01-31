@@ -1,0 +1,18 @@
+{
+  "name": "requena-jsland",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "prompt": "^1.0.0",
+    "prompts": "^2.3.0",
+    "readline-sync": "^1.4.10",
+    "scanf": "^1.1.1"
+  }
+}
