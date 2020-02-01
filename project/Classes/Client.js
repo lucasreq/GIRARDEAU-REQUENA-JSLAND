@@ -21,7 +21,7 @@ class Client extends Person{
             name: 'values',
             message: `Client : Bonjour je voudrais participer à cette fantastique attraction. Je vous présente les membres de ma famille, il y a : `,
             initial: '',
-            separator: ','
+            separator: ' '
         });
 
         let familly = values + ',' + this.firstname + ' de la famille ' + this.lastname
