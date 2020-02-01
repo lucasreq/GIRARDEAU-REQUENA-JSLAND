@@ -4,6 +4,7 @@ const Cashier = require('./Classes/Cashier');
 const Attraction = require('./Classes/Attraction');
 const Restaurant = require('./Classes/Restaurant');
 const Restaurateur = require('./Classes/Restaurateur');
+const sleep = require('system-sleep');
 
 let Billy = new Client("Billy","Croquette",100);
 let Feteduslip = new Attraction("Feteduslip",2,100,Cashier);
