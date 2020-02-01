@@ -10,16 +10,13 @@ class Attraction extends Building{
         this.price = price;
     }
 
-    //toPay(nbparticipant) {
-    //    let totprice = (nbparticipant * this.price);
-    //    console.log("vous devez payer : " + totprice);
-    //    return totprice;
-    //}
-
-
     getPrice() {
         return this.price;
-    }
+    };
+
+    getPlaces() {
+        return this.place;
+    };
 }
 
 module.exports = Attraction;

@@ -5,19 +5,19 @@ const Attraction = require('./Classes/Attraction');
 const Restaurant = require('./Classes/Restaurant');
 
 let Billy = new Client("Billy","Croquette",100);
-let Feteduslip = new Attraction("Feteduslip",2,100,Cashier);
-let Cashierr = new Cashier("tommy","Weinstein",Feteduslip);
+let Feteduslip = new Attraction("FeteDuSlip",2,100,Cashier);
+let Cashierr = new Cashier("Tommy","Weinstein",Feteduslip);
+let VladPutin = new Manager('Vlad','Putin', Cashierr)
 
-let tot = 0;
 
-Billy.Hello();
-Cashierr.Pay().then(tot => {
-    Billy.payAtt(tot)
-  })
-
-// if (tot > 0){
-//     Billy.payAtt(tot)
-// }
-// else{
-//     console.log(tot)
-// }
+Billy.Hello().then(familly => {
+    Cashierr.Pay(familly).then(tot =>{
+        Billy.payAtt(tot);
+        if (Billy.budget > tot){
+            Cashierr.PlacesManage(tot);
+        }
+        else{
+            console.log('Vous ne pouvez pas passer')
+        }
+    });
+});

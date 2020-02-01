@@ -5,6 +5,7 @@ class Manager extends Person{
         super();
         super.firstname = firstname;
         super.lastname = lastname;
+        this.employees = employees;
     }
 }
 
