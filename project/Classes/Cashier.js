@@ -19,7 +19,6 @@ class Cashier extends Person{
             validate: value => value > 0 ? true : "Please enter an integer",
         });
         let totprice = (value * this.attraction.getPrice());
-        console.log("Cashier : vous devez payer : " + totprice);
         let totvalue = [totprice,value]
         return totvalue;
     }

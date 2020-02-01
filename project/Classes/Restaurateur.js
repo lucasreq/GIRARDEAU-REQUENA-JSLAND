@@ -34,9 +34,10 @@ class Restaurateur extends Person {
             let men1 = q2[0];
             let men2 = q2[1];
             let menPrice = ((men1 * this.restaurant.getPriceM1())+(men2 * this.restaurant.getPriceM2()));
-            console.log('Tres bien, donc '+q2[0]+' Menu1 et '+q2[1]+' Menu2.')
-            console.log('Ca vous fera '+menPrice+" € s'il vous plait !");
+            console.log('Restaurateur : Tres bien, donc '+q2[0]+' Menu1 et '+q2[1]+' Menu2.')
+            console.log('Restaurateur : Ca vous fera '+menPrice+" € s'il vous plait !");
             return menPrice;
+            
         }
     }
 }
