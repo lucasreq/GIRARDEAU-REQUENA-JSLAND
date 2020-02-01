@@ -20,12 +20,9 @@ class Client extends Person{
 
 
     payAtt(tot){
-        (async () => {
-            let {value} = await (tot - this.budget);
-            console.log(value)
-        })();
+        let value = tot - this.budget;
+        console.log(value);
     }
-
 
 }
 

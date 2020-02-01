@@ -4,11 +4,18 @@ const Cashier = require('./Classes/Cashier');
 const Attraction = require('./Classes/Attraction');
 const Restaurant = require('./Classes/Restaurant');
 
-
 let Billy = new Client("Billy","Croquette",100);
 let Feteduslip = new Attraction("Feteduslip",2,100,Cashier);
 let Cashierr = new Cashier("tommy","Weinstein",Feteduslip);
 
+let tot = 0;
+
 Billy.Hello();
 let tot = Cashierr.Pay();
-Billy.payAtt()
+
+if (tot > 0){
+    Billy.payAtt(tot)
+}
+else{
+    console.log(tot)
+}
