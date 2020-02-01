@@ -18,7 +18,8 @@ Billy.Direction().then(Direc => {
   if (Direc == 'Attraction') {
 		Billy.Hello().then(familly => {
 			Cashierr.Pay(familly[0]).then(tot =>{
-					if(familly[1] > tot[1]){
+					if(familly[1] >= tot[1]){
+						console.log("Cashier : vous devez payer : " + tot[1]);
 						Billy.payAtt(tot[0]);
 						if (Billy.budget > tot[0]){
 								Cashierr.PlacesManage(tot[0]);
