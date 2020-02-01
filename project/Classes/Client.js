@@ -10,7 +10,7 @@ class Client extends Person{
         this.budget = budget;
     }
 
-    PayAttraction(){
+    PayMen(){
         console.log("Voici");
     }
 
@@ -20,7 +20,7 @@ class Client extends Person{
 
 
     payAtt(tot){
-        let value = tot - this.budget;
+        let value = this.budget - tot;
         console.log(value);
     }
 

@@ -11,11 +11,13 @@ let Cashierr = new Cashier("tommy","Weinstein",Feteduslip);
 let tot = 0;
 
 Billy.Hello();
-let tot = Cashierr.Pay();
-
-if (tot > 0){
+Cashierr.Pay().then(tot => {
     Billy.payAtt(tot)
-}
-else{
-    console.log(tot)
-}
+  })
+
+// if (tot > 0){
+//     Billy.payAtt(tot)
+// }
+// else{
+//     console.log(tot)
+// }
