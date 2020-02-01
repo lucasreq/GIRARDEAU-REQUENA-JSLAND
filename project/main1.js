@@ -10,18 +10,22 @@ let Feteduslip = new Attraction("Feteduslip",2,100,Cashier);
 let Cashierr = new Cashier("tommy","Weinstein",Feteduslip);
 let LaBaraqueAFrite = new Restaurant("LaBaraqueAFrite",Restaurateur, 2.5,4);
 let Cuisto = new Restaurateur("Gordon", "Ramsay", LaBaraqueAFrite);
-let VladPutin = new Manager('Vlad','Putin', Cashierr)
-
+let VladPutin = new Manager('Vlad','Putin', Cashierr);
 
 
 Billy.Hello().then(familly => {
-    Cashierr.Pay(familly).then(tot =>{
-        Billy.payAtt(tot);
-        if (Billy.budget > tot){
-            Cashierr.PlacesManage(tot);
+    Cashierr.Pay(familly[0]).then(tot =>{
+        if(familly[1] > tot[1]){
+            Billy.payAtt(tot[0]);
+            if (Billy.budget > tot[0]){
+                Cashierr.PlacesManage(tot[0]);
+            }
+            else{
+                console.log('Vous ne pouvez pas passer')
+            }
         }
         else{
-            console.log('Vous ne pouvez pas passer')
+            console.log(`Vous n'etes que ${familly[1]} vous ne pouvez pas prendre ${tot[1]} places`)
         }
     });
 });

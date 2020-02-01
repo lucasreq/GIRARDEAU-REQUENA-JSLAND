@@ -16,11 +16,12 @@ class Cashier extends Person{
             type: 'number',
             name: 'value',
             message: `Cashier : Enchanté ${familly}, combien veulent participer a cette attraction ? `,
-            validate: value => value > 0 ? true : "Please enter an integer"
+            validate: value => value > 0 ? true : "Please enter an integer",
         });
         let totprice = (value * this.attraction.getPrice());
         console.log("Cashier : vous devez payer : " + totprice);
-        return totprice;
+        let totvalue = [totprice,value]
+        return totvalue;
     }
 
     PlacesManage(tot){

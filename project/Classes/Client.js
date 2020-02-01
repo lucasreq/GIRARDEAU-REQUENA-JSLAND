@@ -24,14 +24,13 @@ class Client extends Person{
             separator: ' '
         });
 
-        let familly = values + ',' + this.firstname + ' de la famille ' + this.lastname
+        let familly = [`${values}, ${this.firstname} de la famille ${this.lastname}`,values.length]
         return familly
     }
 
     Req(value) {
-        console.log(       console.log(`Client : Bonjour je voudrais participer à cette fantastique attraction. Je vous présente les membres
+        console.log(`Client : Bonjour je voudrais participer à cette fantastique attraction. Je vous présente les membres
         de ma famille. Il y a :` + value)
-        )
     }
 
     payAtt(tot){
@@ -44,7 +43,6 @@ class Client extends Person{
             console.log("Client : désolé je n'ai pas assez de sous")
         }
     }
-
 }
 
 module.exports = Client;
