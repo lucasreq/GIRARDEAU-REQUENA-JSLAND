@@ -24,7 +24,7 @@ class Client extends Person{
             separator: ' '
         });
 
-        let familly = values + ', ' + this.firstname + ' de la famille ' + this.lastname
+        let familly = [`${values}, ${this.firstname} de la famille ${this.lastname}`,values.length]
         return familly
     }
 
