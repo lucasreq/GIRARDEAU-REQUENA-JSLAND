@@ -15,30 +15,30 @@ let VladPutin = new Manager('Vlad','Putin', Cashierr);
 
 
 Billy.Direction().then(Direc => {
-  if (Direc == 'Attraction') {
-		Billy.Hello().then(familly => {
-			Cashierr.Pay(familly[0]).then(tot =>{
-					if(familly[1] > tot[1]){
-							Billy.payAtt(tot[0]);
-							if (Billy.budget > tot[0]){
-									Cashierr.PlacesManage(tot[0]);
-							}
-							else{
-									console.log('Vous ne pouvez pas passer')
-							}
-					}
-					else{
-							console.log(`Vous n'etes que ${familly[1]} vous ne pouvez pas prendre ${tot[1]} places`)
-					}
+		if (Direc == 'Attraction') {
+			Billy.Hello().then(familly => {
+				Cashierr.Pay(familly[0]).then(tot =>{
+						if(familly[1] > tot[1]){
+								Billy.payAtt(tot[0]);
+								if (Billy.budget > tot[0]){
+										Cashierr.PlacesManage(tot[0]);
+								}
+								else{
+										console.log('Vous ne pouvez pas passer')
+								}
+						}
+						else{
+								console.log(`Vous n'etes que ${familly[1]} vous ne pouvez pas prendre ${tot[1]} places`)
+						}
+				});
 			});
-		});
-	}
-	else if (Direc == 'Restaurant') {
-		Cuisto.Command().then(Direc => {
-			Direc = 'Nothing';
-			Billy.Direction();
-		})
-	}
+		}
+		else if (Direc == 'Restaurant') {
+			Cuisto.Command().then(Direc => {
+				Direc = 'Nothing';
+				Billy.Direction();
+			})
+		}
 });
 
 
