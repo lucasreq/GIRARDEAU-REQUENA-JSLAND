@@ -154,14 +154,10 @@ async function main() {
     while (tot == undefined) {
          tot = await cuisto2.command();
     }
-<<<<<<< HEAD
-    sleep(3000);
-    console.log("** Bon, il se fait tard! Rentrons a la maison ! **")
-=======
     family[0].payAtt(tot);
     family[0].history(pattiya.name, tot, cuisto.firstname);
+    sleep(3000);
     console.log("Bon, il se fait tard! Rentrons a la maison !");
->>>>>>> 32d9d8a4731cafb01407c724e01bc468085a7066
 }   
 
 main();
