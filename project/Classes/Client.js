@@ -61,6 +61,17 @@ class Client extends Person{
         return direc;
       };
 
+        
+      history(newLieu, newPrix) {
+        let history = new Map();
+        let lieu = "Dernier lieu";
+        let prix = "Prix payé";
+        history.set(lieu, newLieu);
+        history.set(prix, newPrix);
+
+        return history;
+      }
+
 }
 
 module.exports = Client;

@@ -42,8 +42,10 @@ async function main() {
 				break;
 			}
         case 'Restaurant':
-            tot = await cuisto.command();
-            billy.payAtt(tot);
+			tot = await cuisto.command();
+			billy.history(Restaurant, tot);
+			billy.payAtt(tot);
+			console.log(billy.history(Restaurant.name, tot));
             pass = "Visit";
             break;
         default:
