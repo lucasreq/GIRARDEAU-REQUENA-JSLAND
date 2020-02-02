@@ -23,9 +23,9 @@ for (i = 0; i < attrac.length; i++) {
 };
 
 // let restau = ["Pattiya", "Sturbacks Tea"];
-// let priceR = [12, 4.5];
-// for (i = 0; i < restau.length; i++) {
-//     restau[i] = new Restaurant(restau[i], Restaurateur, priceR[i]);
+// let priceR = [12, 0, 4.5, 0];
+// for (i = 0; i < restau.length; i+2) {
+//     restau[i] = new Restaurant(restau[i], Restaurateur, priceR[i], priceR[i+1]);
 // };
 
 let pattiya = new Restaurant("Pattiya",Restaurateur,12,4.5)
@@ -106,16 +106,17 @@ async function main() {
     family[0].payAtt(tot);
     family[0].history(pattiya.name, tot, cuisto.firstname)
     sleep(3000);
-    console.log("Client : Mince Julia a l'air d'avoir été intoxiquée après avoir mangée au "+pattiya.name+" je vais aller chercher un manager !!");
+    console.log("Client : Mince Julia a l'air d'avoir été intoxiqué après avoir mangé au "+pattiya.name+" je vais aller chercher un Manager !!");
     sleep(1500);
-    console.log("Client : Bonjour, nous avons eu un probleme dans votre restaurant le "+pattiya.name);
+    console.log("Client : Bonjour, nous avons eu un problème dans votre restaurant le "+pattiya.name);
     vladPutin.plainte(pattiya,pattiya.employee,tot);
-    console.log('Client : Tampis allons chercher un autre manager');
+    console.log('Client : Dommage.. Allons chercher un autre manager');
     sleep(700);
-    console.log("Ah bonjour! Bonjour, nous avons eu un probleme dans votre restaurant le "+pattiya.name );
+    console.log("Client : Ah vous voila! Bonjour, nous avons eu un probleme dans votre restaurant le "+pattiya.name );
     let rembourse = picart.plainte(pattiya.name,cuisto.firstname,tot);
     family[0].budget = family[0].budget + rembourse;
-    console.log("Bon maintenant qu'on a été dédommagés allons faire un tours dans les "+attrac[2].name);
+    console.log("Client : Bon maintenant qu'on a été dédommagé, allons faire un tour dans les "+attrac[2].name);
+    sleep(1000)
     tot = await cashierr.pay2(family[0].firstname); 
     if (family.length < tot[1]) {
         console.log(`Cashier : Vous n'etes que 3 vous ne pouvez pas prendre ${tot[1]} places`);
@@ -130,8 +131,8 @@ async function main() {
         }
     }
     sleep(2000)
-    console.log("Continuons au "+attrac[3].name)
-    sleep(1000)
+    console.log("Client : Continuons au "+attrac[3].name)
+    sleep(2000)
     if (family.length < tot[1]) {
         console.log(`Cashier : Vous n'etes que 3 vous ne pouvez pas prendre ${tot[1]} places`);
     }
@@ -144,16 +145,17 @@ async function main() {
             console.log('Cashier : Vous ne pouvez pas passer');
         }
     }
-    console.log('Oh mince! Quelle humiliation allons chercher des sous au distributeur !')
+    console.log('** Oh mince! Quelle humiliation allons chercher des sous au distributeur ! **')
     sleep(3000);
-    family.budget = 1000;
-    console.log("Allons deguster un bon gouter au "+sturbacks.name)
-    sleep(1000)
+    family.budget = family.budget + 1000;
+    console.log("Client : Allons deguster un bon gouter au "+sturbacks.name)
+    sleep(1670);
     tot = await cuisto2.command();   // ==> Input demandé === 3 puis === 3 0
     while (tot == undefined) {
          tot = await cuisto2.command();
     }
-    console.log("Bon, il se fait tard! Rentrons a la maison !")
+    sleep(3000);
+    console.log("** Bon, il se fait tard! Rentrons a la maison ! **")
 }   
 
 main();
