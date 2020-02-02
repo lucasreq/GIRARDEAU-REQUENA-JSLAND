@@ -34,10 +34,10 @@ class Client extends Person{
     }
 
     payAtt(tot){
-        if (this.budget > tot){
+        if (this.budget >= tot){
             let value = this.budget - tot;
             this.budget = value;
-            console.log("Client : Il me reste : " + value + " euros");
+            console.log("Client : Il me reste : " + value.toFixed(2) + " euros");
         }
         else{
             console.log("Client : désolé je n'ai pas assez de sous")
@@ -45,18 +45,20 @@ class Client extends Person{
     }
 
     async direction() {
-        const {Direc} = await prompts({
+        const {direc} = await prompts({
           type:'select',
-          name: 'Direc',
+          name: 'direc',
           message: "Vous êtes au centre du Parc. Où voulez-vous aller?",
           choices: [
             { title: 'Faire une attraction', description: 'FeteDuSlip', value: 'Attraction'},
-            { title: 'Aller manger', description: 'LaBaraqueAFrite', value: 'Restaurant'}
+            { title: 'Aller manger', description: 'LaBaraqueAFrite', value: 'Restaurant'},
+            { title: 'Se Plaindre', description: 'Allez en parler au Manager', value: 'Manager'},
+            { title: 'Quitter le Parc', value: 'Exit'}
           ],
           initial: 0,
           hint: 'Choisissez votre direction =>'
         });
-        return Direc
+        return direc;
       };
 
 }

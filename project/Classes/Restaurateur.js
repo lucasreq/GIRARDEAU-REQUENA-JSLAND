@@ -34,12 +34,31 @@ class Restaurateur extends Person {
             let men1 = q2[0];
             let men2 = q2[1];
             let menPrice = ((men1 * this.restaurant.getPriceM1())+(men2 * this.restaurant.getPriceM2()));
-            console.log('Restaurateur : Tres bien, donc '+q2[0]+' Menu1 et '+q2[1]+' Menu2.')
+            console.log('Restaurateur : Tres bien, donc '+q2[0]+' Menu1 et '+q2[1]+' Menu2.');
+            let now = new Date();
+            if (12 <= parseInt(now.getHours()) && parseInt(now.getHours()) <= 14) {
+                menPrice = menPrice * 0.8;
+                console.log("Restaurateur : C'est l'Happy Hour ! Nous vous offrons 20% de remise sur votre commande !");
+            }
             console.log('Restaurateur : Ca vous fera '+menPrice+" € s'il vous plait !");
-            return menPrice;
-            
+            let dessert = 0;
+            function rand(max) {
+                return Math.floor(Math.random() * Math.floor(max));
+            }
+            for (let i = 0; i < q1; i++) {
+                if (rand(q1)==0) {
+                    dessert +=1;
+                }
+            }
+            if (dessert != 0) {
+                console.log("Pour vous remercier d'avoir mangé chez nous, nous vous offrons "+dessert+" Dessert(s) ! Régalez-vous !")
+            }
+            return menPrice;   
         }
     }
+
+    
+
 }
 
 module.exports = Restaurateur;
