@@ -44,7 +44,7 @@ class Client extends Person{
         }
     }
 
-    async Direction() {
+    async direction() {
         const {Direc} = await prompts({
           type:'select',
           name: 'Direc',

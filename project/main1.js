@@ -6,39 +6,41 @@ const Restaurant = require('./Classes/Restaurant');
 const Restaurateur = require('./Classes/Restaurateur');
 const sleep = require('system-sleep');
 
-let Billy = new Client("Billy","Croquette",100);
-let Feteduslip = new Attraction("Feteduslip",2,100,Cashier);
-let Cashierr = new Cashier("tommy","Weinstein",Feteduslip);
-let LaBaraqueAFrite = new Restaurant("LaBaraqueAFrite",Restaurateur, 2.5,4);
-let Cuisto = new Restaurateur("Gordon", "Ramsay", LaBaraqueAFrite);
-let VladPutin = new Manager('Vlad','Putin', Cashierr);
+let billy = new Client("Billy","Croquette",100);
+let feteDuSlip = new Attraction("Feteduslip",2,100,Cashier);
+let cashierr = new Cashier("tommy","Weinstein",feteDuSlip);
+let laBaraqueAFrite = new Restaurant("LaBaraqueAFrite",Restaurateur, 2.5,4);
+let cuisto = new Restaurateur("Gordon", "Ramsay", laBaraqueAFrite);
+let vladPutin = new Manager('Vlad','Putin', cashierr);
 
 
-let Pass = 'Visit';
+let pass = 'Visit';
 
 async function main() {
-    const dir = await Billy.Direction()
+    const dir = await billy.direction()
     let tot = undefined
     switch (dir) {
         case 'Attraction':
-            const family = await Billy.Hello()
-            tot = await Cashierr.Pay(family[0])
+            const family = await billy.Hello()
+            tot = await cashierr.pay(family[0])
             if (family[1] < tot[1]) {
                 console.log(`Vous n'etes que ${family[1]} vous ne pouvez pas prendre ${tot[1]} places`);
-            }
-            console.log("Cashier : vous devez payer : " + tot[1]);
-            Billy.payAtt(tot[0]);
-            if (Billy.budget > tot[0]) {
-				Cashierr.PlacesManage(tot[0]);
-				Pass = "Visit";
-            } else {
-                console.log('Vous ne pouvez pas passer');
-            }
-            break;
+			}
+			else {
+				console.log("Cashier : vous devez payer " + tot[0] + " €.");
+				billy.payAtt(tot[0]);
+				if (billy.budget > tot[0]) {
+					cashierr.placesManage(tot[0]);
+					pass = "Visit";
+				} else {
+					console.log('Vous ne pouvez pas passer');
+				}
+				break;
+			}
         case 'Restaurant':
-            tot = await Cuisto.Command()
-            Billy.payAtt(tot);
-            Pass = "Visit";
+            tot = await cuisto.command()
+            billy.payAtt(tot);
+            pass = "Visit";
             break;
         default:
             break;
@@ -46,10 +48,10 @@ async function main() {
 }
 
 (async () => {
-    while (Billy.budget > 0) {
-        console.log(Pass) // Si Pass === Nothing alors boucle infini...
-        if (Pass == "Visit") {
-            Pass = 'Nothing';
+    while (billy.budget > 0) {
+        console.log(pass) // Si pass === Nothing alors boucle infini...
+        if (pass == "Visit") {
+            pass = 'Nothing';
             await main();
         }
     }

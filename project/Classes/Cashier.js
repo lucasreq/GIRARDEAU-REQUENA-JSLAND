@@ -11,7 +11,7 @@ class Cashier extends Person{
         this.attraction = attraction;
     }
 
-    async Pay(familly) {
+    async pay(familly) {
         const {value} = await prompts({
             type: 'number',
             name: 'value',
@@ -23,7 +23,7 @@ class Cashier extends Person{
         return totvalue;
     }
 
-    PlacesManage(tot){
+    placesManage(tot){
         let douille = (tot / this.attraction.getPrice());
         let places = this.attraction.place - douille;
         console.log("Cashier : Il reste " + places + " places dans cette attraction");

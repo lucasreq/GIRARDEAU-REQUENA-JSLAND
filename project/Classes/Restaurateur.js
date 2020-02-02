@@ -11,7 +11,7 @@ class Restaurateur extends Person {
         this.restaurant = restaurant;
     }
 
-    async Command() {
+    async command() {
         const {q1} = await prompts({
             type: 'number',
             name: 'q1',
@@ -28,7 +28,7 @@ class Restaurateur extends Person {
         });
         if (parseInt(q2[0])+ parseInt(q2[1]) != q1) {
             console.log("Restaurateur : J'ai du mal noter quelque chose... On recommence !");
-            this.Command();
+            this.command();
         }
         else {
             let men1 = q2[0];
