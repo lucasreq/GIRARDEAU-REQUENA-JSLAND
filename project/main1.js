@@ -44,8 +44,13 @@ async function main() {
 				}
 				break;
 			}
+			pass = "Visit";
+			break;
         case 'Restaurant':
 			tot = await cuisto.command();
+			while (tot === undefined) {
+				tot = await cuisto.command();
+			}
 			billy.history(Restaurant, tot);
 			billy.payAtt(tot);
 			history = await billy.history(cuisto.restaurant.name, tot, cuisto.firstname);
@@ -54,27 +59,26 @@ async function main() {
         default:
 			break;
 		case 'Manager':
-			if (history != undefined) {
-				// console.log(history); // Dico de l'historique
-				// console.log(history.get("Dernier lieu")); // Nom du dernier Batiment
-				// console.log(history.get("Prix payé"));	// Prix de la Derniere Transaction
-				// console.log(history.get("Employé")); // Nom de l'employé
-				
+			if (history != undefined) {				
 				const man = await billy.plainte();
 				switch (man) {
 					case 'putin':
 						remboursement = await vladPutin.plainte(history.get("Dernier lieu"), history.get("Employé"), history.get("Prix payé"));
 						billy.budget = billy.budget + remboursement;
+						history = undefined;
+						break;
 					case 'picart':
 						remboursement = await picart.plainte(history.get("Dernier lieu"), history.get("Employé"), history.get("Prix payé"));
 						billy.budget = billy.budget + remboursement;
+						history = undefined;
+						break;
 				}
-				
-
 			}
 			else {
-				console.log("Vous ne pouvez pas vous plaindre avant meme de tester notre Parc !")
-			}
+				console.log("Vous n'avez pas encore exploré le Parc, ou votre dernière transaction a déja été traité");
+			};
+			pass = "Visit";
+			break;
 		case 'Exit':
 			console.log("*** Il vous reste "+ billy.budget+" € ***");
 			console.log("Merci d'etre passé dans notre Parc ! A la Prochaine !");
