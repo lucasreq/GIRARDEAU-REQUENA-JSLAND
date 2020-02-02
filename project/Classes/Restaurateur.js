@@ -53,7 +53,7 @@ class Restaurateur extends Person {
             if (dessert != 0) {
                 console.log("Pour vous remercier d'avoir mangé chez nous, nous vous offrons "+dessert+" Dessert(s) ! Régalez-vous !")
             }
-            return menPrice;   
+            return menPrice;
         }
     }
 

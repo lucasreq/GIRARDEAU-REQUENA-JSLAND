@@ -2,6 +2,7 @@ const Person = require('./Person');
 const Attraction = require('./Attraction');
 const Client = require('./Client');
 const prompts = require('prompts');
+const keysend = require('node-key-sender');
 
 class Cashier extends Person{
     constructor(firstname, lastname, attraction){
@@ -16,6 +17,7 @@ class Cashier extends Person{
             type: 'number',
             name: 'value',
             message: `Cashier : Enchanté ${familly}, combien veulent participer a cette attraction ? `,
+            initial: 3,
             validate: value => value > 0 ? true : "Please enter an integer",
         });
         let totprice = (value * this.attraction.getPrice());
@@ -33,6 +35,21 @@ class Cashier extends Person{
         else{
             console.log("Cashier : Vous pouvez passer");
         }
+    }
+
+    async pay2(familly) {
+        const {value} = await prompts({
+            type: 'number',
+            name: 'value',
+            message: `Cashier : Enchanté ${familly}, combien veulent participer a cette attraction ? `,
+            initial: 3,
+            validate: value => value > 0 ? true : "Please enter an integer",
+        });
+        //keysend.sendKey("@9");
+        //keysend.sendKey("@10");
+        let totprice = (value * this.attraction.getPrice());
+        let totvalue = [totprice,value];
+        return totvalue;
     }
 }
 
