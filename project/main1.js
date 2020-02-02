@@ -12,6 +12,7 @@ let cashierr = new Cashier("tommy","Weinstein",feteDuSlip);
 let laBaraqueAFrite = new Restaurant("LaBaraqueAFrite",Restaurateur, 2.5,4);
 let cuisto = new Restaurateur("Gordon", "Ramsay", laBaraqueAFrite);
 let vladPutin = new Manager('Vlad','Putin', cashierr);
+let picart = new Manager('Patrick','Picart', cuisto);
 
 
 let pass = 'Visit';
@@ -36,7 +37,7 @@ async function main() {
 				billy.payAtt(tot[0]);
 				if (billy.budget > tot[0]) {
 					cashierr.placesManage(tot[0]);
-					history = await billy.history(cashierr.attraction.name, tot[0]);
+					history = await billy.history(cashierr.attraction.name, tot[0], cashierr.firstname);
 					pass = "Visit";
 				} else {
 					console.log('Cashier : Vous ne pouvez pas passer');
@@ -47,20 +48,32 @@ async function main() {
 			tot = await cuisto.command();
 			billy.history(Restaurant, tot);
 			billy.payAtt(tot);
-			history = await billy.history(cuisto.restaurant.name, tot);
+			history = await billy.history(cuisto.restaurant.name, tot, cuisto.firstname);
             pass = "Visit";
             break;
         default:
 			break;
 		case 'Manager':
-			console.log('En cours de dev');
 			if (history != undefined) {
-				console.log(history); // Dico de l'historique
-				console.log(history.get("Dernier lieu")); // Nom du dernier Batiment
-				console.log(history.get("Prix payé"));	// Prix de la Derniere Transaction
+				// console.log(history); // Dico de l'historique
+				// console.log(history.get("Dernier lieu")); // Nom du dernier Batiment
+				// console.log(history.get("Prix payé"));	// Prix de la Derniere Transaction
+				// console.log(history.get("Employé")); // Nom de l'employé
+				
+				const man = await billy.plainte();
+				switch (man) {
+					case 'putin':
+						remboursement = await vladPutin.plainte(history.get("Dernier lieu"), history.get("Employé"), history.get("Prix payé"));
+						billy.budget = billy.budget + remboursement;
+					case 'picart':
+						remboursement = await picart.plainte(history.get("Dernier lieu"), history.get("Employé"), history.get("Prix payé"));
+						billy.budget = billy.budget + remboursement;
+				}
+				
+
 			}
 			else {
-				console.log("Vous ne pouvez pas vous plaindre avant meme de tester !")
+				console.log("Vous ne pouvez pas vous plaindre avant meme de tester notre Parc !")
 			}
 		case 'Exit':
 			console.log("*** Il vous reste "+ billy.budget+" € ***");

@@ -62,16 +62,31 @@ class Client extends Person{
       };
 
         
-      history(newLieu, newPrix) {
+      history(newLieu, newPrix, newEmployee) {
         let history = new Map();
         let lieu = "Dernier lieu";
         let prix = "Prix payé";
-        
+        let employee = "Employé";
+
         history.set(lieu, newLieu);
         history.set(prix, newPrix);
+        history.set(employee, newEmployee);
 
         return history;
       }
+
+      async plainte() {
+        const {manage} = await prompts({
+            type: 'select',
+            name: 'manage',
+            message: 'Vers quelle Manager voulez-vous aller?',
+            choices: [
+                { title: 'Vlad Putin', description: "Manager de l'Attraction", value: 'putin'},
+                { title: 'Monsieur Picart', description: "Manager du Restaurant", value: 'picart'}
+            ]
+        });
+        return manage;
+    };
 
 }
 
