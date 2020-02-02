@@ -12,7 +12,11 @@ Vous disposez de deux possibilités :
 Main1 : Vous avez le pouvoir des décisions, un menu vous permettra de naviguer entre les attractions.
 Main2 : Un scénario automatique se lance.
 
+<<<<<<< HEAD
 Pour Main2, faites seulement tab + enter quand on vous demande une valeur. Cela fera le travail.
+=======
+Pour Main2, ne faite seulement tab + enter quand on vous demande une valeur. Cela fera le travail.
+>>>>>>> aefb215d17ad1c5a121726ecf2727bb91d1070fe
 
 ### Contributeurs
 - LouisGi
