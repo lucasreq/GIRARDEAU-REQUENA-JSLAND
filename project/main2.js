@@ -23,9 +23,9 @@ for (i = 0; i < attrac.length; i++) {
 };
 
 // let restau = ["Pattiya", "Sturbacks Tea"];
-// let priceR = [12, 4.5];
-// for (i = 0; i < restau.length; i++) {
-//     restau[i] = new Restaurant(restau[i], Restaurateur, priceR[i]);
+// let priceR = [12, 0, 4.5, 0];
+// for (i = 0; i < restau.length; i+2) {
+//     restau[i] = new Restaurant(restau[i], Restaurateur, priceR[i], priceR[i+1]);
 // };
 
 let pattiya = new Restaurant("Pattiya",Restaurateur,12,4.5)
@@ -153,7 +153,9 @@ async function main() {
     while (tot == undefined) {
          tot = await cuisto2.command();
     }
-    console.log("Bon, il se fait tard! Rentrons a la maison !")
+    family[0].payAtt(tot);
+    family[0].history(pattiya.name, tot, cuisto.firstname);
+    console.log("Bon, il se fait tard! Rentrons a la maison !");
 }   
 
 main();

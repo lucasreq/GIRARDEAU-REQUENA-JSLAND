@@ -15,6 +15,7 @@ class Restaurateur extends Person {
         const {q1} = await prompts({
             type: 'number',
             name: 'q1',
+            initial: 3,
             message: 'Restaurateur : Ah Bonjour ! Combien êtes-Vous?',
             validate: q1 => q1 > 0 ? true : "Ce n'est pas un nombre exact"
         });
@@ -22,7 +23,7 @@ class Restaurateur extends Person {
             type: 'list',
             name: 'q2',
             message: "Restaurateur : Très bien, vous êtes donc "+q1+". Combien y aura t-il de menus 1 ? Et combien de menus 2 ?",
-            initial: '',
+            initial: 3,
             separator: ' ',
             validate: q2 => (q2[0] !== 0) || (q2[1] !== 0) ? true : "Restaurateur : Euh... J'attend toujours.. Combien de Menu 1 et de Menu 2?"
         });
@@ -56,8 +57,6 @@ class Restaurateur extends Person {
             return menPrice;
         }
     }
-
-    
 
 }
 
