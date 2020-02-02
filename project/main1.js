@@ -13,47 +13,44 @@ let LaBaraqueAFrite = new Restaurant("LaBaraqueAFrite",Restaurateur, 2.5,4);
 let Cuisto = new Restaurateur("Gordon", "Ramsay", LaBaraqueAFrite);
 let VladPutin = new Manager('Vlad','Putin', Cashierr);
 
-// let Pass = 'Visit'
 
-// function Main() {
-	Billy.Direction().then(Direc => {
-			if (Direc == 'Attraction') {
-				Billy.Hello().then(familly => {
-					Cashierr.Pay(familly[0]).then(tot =>{
-							if(familly[1] >= tot[1]){
-								console.log("Cashier : vous devez payer : " + tot[1]);
-								Billy.payAtt(tot[0]);
-								if (Billy.budget > tot[0]){
-									Cashierr.PlacesManage(tot[0]);
-								}
-								else{
-									console.log('Vous ne pouvez pas passer');
-								}
-							}
-							else{
-								console.log(`Vous n'etes que ${familly[1]} vous ne pouvez pas prendre ${tot[1]} places`);
-							}
-					});
-				});
-			}
-			else if (Direc == 'Restaurant') {
-				Cuisto.Command().then(tot => {
-					// Pass = 'Visit';
-					Billy.payAtt(tot);
-					// Billy.Direction(); -> pas utile dans la boucle normalement
-				})
-			}
-	});
-// }
+let Pass = 'Visit';
 
-// while (Billy.budget > 0) {
-// 	if (Pass == "Visit") {
-// 		Pass = 'Nothing';
-// 		Main();
-// 	}
-// 	else {
-// 		continue;
-// 	}
-// }
+async function main() {
+    const dir = await Billy.Direction()
+    let tot = undefined
+    switch (dir) {
+        case 'Attraction':
+            const family = await Billy.Hello()
+            tot = await Cashierr.Pay(family[0])
+            if (family[1] < tot[1]) {
+                console.log(`Vous n'etes que ${family[1]} vous ne pouvez pas prendre ${tot[1]} places`);
+            }
+            console.log("Cashier : vous devez payer : " + tot[1]);
+            Billy.payAtt(tot[0]);
+            if (Billy.budget > tot[0]) {
+				Cashierr.PlacesManage(tot[0]);
+				Pass = "Visit";
+            } else {
+                console.log('Vous ne pouvez pas passer');
+            }
+            break;
+        case 'Restaurant':
+            tot = await Cuisto.Command()
+            Billy.payAtt(tot);
+            Pass = "Visit";
+            break;
+        default:
+            break;
+    }
+}
 
-
+(async () => {
+    while (Billy.budget > 0) {
+        console.log(Pass) // Si Pass === Nothing alors boucle infini...
+        if (Pass == "Visit") {
+            Pass = 'Nothing';
+            await main();
+        }
+    }
+})()
