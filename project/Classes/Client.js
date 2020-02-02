@@ -1,7 +1,7 @@
 const Person = require('./Person');
 const Attraction = require('./Attraction');
 const Cashier = require('./Cashier');
-const prompts = require('prompts')
+const prompts = require('prompts');
 
 class Client extends Person{
     constructor(firstname,lastname,budget) {
@@ -66,6 +66,7 @@ class Client extends Person{
         let history = new Map();
         let lieu = "Dernier lieu";
         let prix = "Prix payé";
+        
         history.set(lieu, newLieu);
         history.set(prix, newPrix);
 

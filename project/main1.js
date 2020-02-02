@@ -15,6 +15,7 @@ let vladPutin = new Manager('Vlad','Putin', cashierr);
 
 
 let pass = 'Visit';
+let history = undefined;
 
 function rand(max) {
 	return Math.floor(Math.random() * Math.floor(max));
@@ -35,6 +36,7 @@ async function main() {
 				billy.payAtt(tot[0]);
 				if (billy.budget > tot[0]) {
 					cashierr.placesManage(tot[0]);
+					history = await billy.history(cashierr.attraction.name, tot[0]);
 					pass = "Visit";
 				} else {
 					console.log('Cashier : Vous ne pouvez pas passer');
@@ -45,13 +47,21 @@ async function main() {
 			tot = await cuisto.command();
 			billy.history(Restaurant, tot);
 			billy.payAtt(tot);
-			console.log(billy.history(Restaurant.name, tot));
+			history = await billy.history(cuisto.restaurant.name, tot);
             pass = "Visit";
             break;
         default:
 			break;
 		case 'Manager':
 			console.log('En cours de dev');
+			if (history != undefined) {
+				console.log(history); // Dico de l'historique
+				console.log(history.get("Dernier lieu")); // Nom du dernier Batiment
+				console.log(history.get("Prix payé"));	// Prix de la Derniere Transaction
+			}
+			else {
+				console.log("Vous ne pouvez pas vous plaindre avant meme de tester !")
+			}
 		case 'Exit':
 			console.log("*** Il vous reste "+ billy.budget+" € ***");
 			console.log("Merci d'etre passé dans notre Parc ! A la Prochaine !");
