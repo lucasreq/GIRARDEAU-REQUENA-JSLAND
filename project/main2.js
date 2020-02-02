@@ -41,7 +41,7 @@ let tot = undefined;
 async function main() {
     console.log("** Vous patientez dans la queue.. **");
     sleep(1000);
-    console.log("**Vous entrez dans le Parc et vous ous dirigez vers votre première attraction.. Les "+attrac[0].name+" ! **");
+    console.log("**Vous entrez dans le Parc et vous vous dirigez vers votre première attraction.. Les "+attrac[0].name+" ! **");
     console.log("** Vous etes maintenant au comptoir et attendez votre tour **");
     sleep(2000);
     tot = await cashierr.pay(family[0].firstname);    // ==> Input demandé === 3
@@ -99,6 +99,7 @@ async function main() {
     sleep(5000);
     console.log("** Nous réglons la note et partons vers de nouvelles aventures ! **");
     family[0].payAtt(tot);
+    family[0].history(restau[0].name, tot, cuisto.firstname)
 
 }
 
